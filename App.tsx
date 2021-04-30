@@ -1,21 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+
+import { useFonts } from 'expo-font';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native';
+
+import AppProvider from './src/hooks';
+import Routes from './src/routes';
+
+const App: React.FC = () => {
+  const [loaded] = useFonts({
+    'RobotoSlab-Medium': require('./assets/fonts/RobotoSlab-Medium.ttf'),
+    'RobotoSlab-Regular': require('./assets/fonts/RobotoSlab-Regular.ttf')
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <StatusBar barStyle="light-content" backgroundColor="#312e38" />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      <AppProvider>
+        <View style={{ flex: 1, backgroundColor: '#312e38' }}>
+          <Routes />
+        </View>
+      </AppProvider>
+    </NavigationContainer>
+  );
+};
+
+export default App;

@@ -1,0 +1,94 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "standard",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/standard",
+    "prettier/react"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint",
+    "prettier",
+    "eslint-plugin-import-helpers"
+  ],
+  "rules": {
+    "no-use-before-define": "off",
+    "semi": [2, "always", { "omitLastInOneLineBlock": true}],
+    "prettier/prettier": "error",
+    "space-before-function-paren": "off",
+    "react/prop-types": "off", "code": 0,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "class-methods-use-this": "off",
+    "no-prototype-builtins": "off",
+    "no-restricted-syntax": "off",
+    "max-classes-per-file": "off",
+    "no-console": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "_"
+      }
+    ],
+    "no-useless-constructor": "off",
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        "selector": "interface",
+        "format": [
+          "PascalCase"
+        ],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": [
+      "warn"
+    ],
+    "no-underscore-dangle": "off",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always", // new line between groups
+        "groups": [
+          "module",
+          "/^@server/shared/",
+          "/^@/",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ]
+  }
+}
